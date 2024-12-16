@@ -75,7 +75,7 @@ using namespace arm_simd;
 
 struct PelBufferOps
 {
-  PelBufferOps();
+  void initPelBufOps();
 
   bool isInitX86Done;
 

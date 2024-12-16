@@ -445,7 +445,7 @@ uint64_t AvgHighPassWithDownsamplingDiff2ndCore (const int width,const int heigh
   return (taAct);
 }
 
-PelBufferOps::PelBufferOps()
+void PelBufferOps::initPelBufOps()
 {
   isInitX86Done = false;
 

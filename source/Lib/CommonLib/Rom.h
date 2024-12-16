@@ -85,18 +85,8 @@ struct ScanElement
 };
 
 
-class InitGeoRom
-{
-  public:
-    InitGeoRom() { initGeoTemplate(); }
+void initGeoTemplate();
 
-    ~InitGeoRom() { }
-
-  private:
-    void initGeoTemplate() const;
-
-  private:
-};
 
 extern const ScanElement  m_scanOrderBuf[32258];
 extern const ScanElement* m_scanOrder[SCAN_NUMBER_OF_GROUP_TYPES][MAX_TU_SIZE_IDX][MAX_TU_SIZE_IDX];
@@ -114,8 +104,6 @@ class CodingStructure;
 int8_t getBcwWeight(uint8_t bcwIdx, uint8_t uhRefFrmList);
 void resetBcwCodingOrder(bool bRunDecoding, const CodingStructure &cs);
 uint32_t deriveWeightIdxBits(uint8_t bcwIdx);
-
-extern const InitGeoRom g_scanOrderRom;
 
 extern const uint32_t g_log2SbbSize[MAX_TU_SIZE_IDX][MAX_TU_SIZE_IDX][2];
 extern const ScanElement g_coefTopLeftDiagScan8x8[MAX_TU_SIZE_IDX][64];

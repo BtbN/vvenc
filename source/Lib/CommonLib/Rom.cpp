@@ -1301,7 +1301,7 @@ uint32_t deriveWeightIdxBits(uint8_t bcwIdx) // Note: align this with TEncSbac::
 //  }
 //}
 
-void InitGeoRom::initGeoTemplate() const
+void initGeoTemplate()
 {
   int modeIdx = 0;
   for (int angleIdx = 0; angleIdx < GEO_NUM_ANGLES; angleIdx++)
@@ -1380,8 +1380,6 @@ const int8_t    g_Dis[GEO_NUM_ANGLES]          = { 8,  8,  8,  8,  4,  4,  2,  1
 const int8_t    g_angle2mirror[GEO_NUM_ANGLES] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2,
                                              0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2 };
 int16_t   g_weightOffset[GEO_NUM_CU_SIZE][GEO_NUM_CU_SIZE][GEO_NUM_PARTITION_MODE][2];
-
-const InitGeoRom g_scanOrderRom;
 
 // ====================================================================================================================
 // Data structure related table & variable

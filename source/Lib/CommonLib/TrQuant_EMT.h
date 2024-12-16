@@ -58,7 +58,7 @@ using namespace arm_simd;
 #if ENABLE_SIMD_TRAFO
 struct TCoeffOps
 {
-  TCoeffOps();
+  void initTCoeffOps();
 
 #if defined( TARGET_SIMD_X86 )
   void initTCoeffOpsX86();

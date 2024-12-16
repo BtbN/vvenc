@@ -256,6 +256,8 @@ static bool test_TCoeffOps()
 {
   TCoeffOps ref;
   TCoeffOps opt;
+  ref.initTCoeffOps();
+  opt.initTCoeffOps();
 #if defined( TARGET_SIMD_X86 )
   opt.initTCoeffOpsX86();
 #endif

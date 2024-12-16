@@ -2000,7 +2000,7 @@ void fastFwdCore( const TMatrixCoeff* tc, const TCoeff* src, TCoeff* dst, unsign
 }
 
 
-TCoeffOps::TCoeffOps()
+void TCoeffOps::initTCoeffOps()
 {
   cpyResi4        = cpyResiCore;
   cpyResi8        = cpyResiCore;

@@ -51,6 +51,30 @@ POSSIBILITY OF SUCH DAMAGE.
 
 #include "vvencimpl.h"
 
+#include "CommonLib/Unit.h"
+#include "CommonLib/Buffer.h"
+#include "CommonLib/Rom.h"
+#include "CommonLib/TrQuant_EMT.h"
+
+static std::mutex init_static_data_mutex;
+static bool init_static_data_done = false;
+
+static void init_static_data()
+{
+    std::lock_guard<std::mutex> lock(init_static_data_mutex);
+    if (init_static_data_done)
+        return;
+
+    vvenc::g_pelBufOP.initPelBufOps();
+    vvenc::initGeoTemplate();
+
+#if ENABLE_SIMD_TRAFO
+    vvenc::g_tCoeffOps.initTCoeffOps();
+#endif
+
+    init_static_data_done = true;
+}
+
 VVENC_NAMESPACE_BEGIN
 
 VVENC_DECL vvencYUVBuffer* vvenc_YUVBuffer_alloc()
@@ -211,6 +235,8 @@ VVENC_DECL void vvenc_accessUnit_default(vvencAccessUnit *accessUnit )
 
 VVENC_DECL vvencEncoder* vvenc_encoder_create()
 {
+  init_static_data();
+
   vvenc::VVEncImpl* encCtx = new vvenc::VVEncImpl();
   if (!encCtx)
   {
